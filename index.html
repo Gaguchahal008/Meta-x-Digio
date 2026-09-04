@@ -14,8 +14,8 @@
             --accent-orange: #ff5e00;
             --accent-purple: #a855f7;
             --bg-dark: #030712;
-            --card-bg: rgba(17, 24, 39, 0.7);
-            --card-border: rgba(255, 255, 255, 0.08);
+            --card-bg: rgba(17, 24, 39, 0.85);
+            --card-border: rgba(255, 255, 255, 0.1);
             --text-main: #f9fafb;
             --text-muted: #9ca3af;
         }
@@ -38,11 +38,11 @@
             background-attachment: fixed;
         }
 
-        /* Navigation */
+        /* Navigation Bar */
         header {
             position: sticky;
             top: 0;
-            background: rgba(3, 7, 18, 0.85);
+            background: rgba(3, 7, 18, 0.95);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--card-border);
@@ -55,11 +55,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 2rem;
+            padding: 1rem 1.5rem;
+            position: relative;
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #fff;
@@ -70,6 +71,18 @@
             background: linear-gradient(135deg, #3b82f6, var(--accent-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Mobile Menu Toggle Button */
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: #fff;
+            font-size: 1.5rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -94,8 +107,8 @@
         /* Hero Section */
         .hero {
             max-width: 1000px;
-            margin: 5rem auto 3rem;
-            padding: 0 2rem;
+            margin: 3rem auto 2rem;
+            padding: 0 1.5rem;
             text-align: center;
         }
 
@@ -106,35 +119,35 @@
             background: rgba(37, 99, 235, 0.1);
             border: 1px solid rgba(37, 99, 235, 0.3);
             color: #60a5fa;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.15;
+            font-size: 2.5rem;
+            line-height: 1.2;
             font-weight: 800;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.05rem;
             color: var(--text-muted);
             max-width: 750px;
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 2rem;
         }
 
         .cta-btn {
             display: inline-block;
             background: linear-gradient(135deg, var(--primary), #1d4ed8);
             color: #fff;
-            padding: 1rem 2.5rem;
+            padding: 0.9rem 2rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
@@ -143,32 +156,28 @@
             cursor: pointer;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 35px rgba(37, 99, 235, 0.6);
-        }
-
         /* Stats Bar */
         .stats-bar {
-            display: flex;
-            justify-content: space-around;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
             max-width: 1000px;
-            margin: 3rem auto 0;
+            margin: 2.5rem auto 0;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 12px;
             text-align: center;
         }
 
         .stat-item h4 {
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: var(--accent-cyan);
             font-weight: 800;
         }
 
         .stat-item p {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             text-transform: uppercase;
         }
@@ -178,7 +187,7 @@
             display: none;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 2.5rem 1.5rem;
             animation: fadeIn 0.4s ease forwards;
         }
 
@@ -192,7 +201,7 @@
         }
 
         .section-title {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 2rem;
             text-align: center;
@@ -202,8 +211,8 @@
         /* Glassmorphism Cards */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
@@ -211,37 +220,31 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
-            padding: 2.2rem 1.8rem;
+            padding: 1.8rem 1.5rem;
             border-radius: 16px;
             transition: all 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(37, 99, 235, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
         .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
             color: #fff;
         }
 
         .card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .card ul {
             list-style: none;
-            margin-top: 1.2rem;
+            margin-top: 1rem;
         }
 
         .card ul li {
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .card ul li::before {
@@ -250,23 +253,22 @@
             margin-right: 6px;
         }
 
-        /* Influencer Specific Highlights */
         .influencer-badge {
             color: var(--accent-purple) !important;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         /* ROI Calculator Widget */
         .calculator-card {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.9);
             border: 1px solid var(--primary);
             border-radius: 16px;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 1.5rem;
+            margin-top: 2.5rem;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -275,20 +277,20 @@
         .calc-inputs {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
         .calc-output {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background: rgba(37, 99, 235, 0.1);
+            margin-top: 1.2rem;
+            padding: 1.2rem;
+            background: rgba(37, 99, 235, 0.15);
             border-radius: 8px;
             text-align: center;
         }
 
         .calc-output h4 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--accent-cyan);
         }
 
@@ -297,13 +299,14 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 8px;
-            margin-bottom: 1rem;
-            padding: 1.2rem;
+            margin-bottom: 0.8rem;
+            padding: 1rem;
             cursor: pointer;
         }
 
         .faq-question {
             font-weight: 600;
+            font-size: 0.95rem;
             display: flex;
             justify-content: space-between;
             color: #fff;
@@ -313,7 +316,7 @@
             display: none;
             margin-top: 0.8rem;
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.88rem;
         }
 
         .faq-item.active .faq-answer {
@@ -322,17 +325,17 @@
 
         /* Pricing Elements */
         .price-tag {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: var(--accent-orange);
-            margin: 1.2rem 0;
+            margin: 1rem 0;
         }
 
         .old-price {
             text-decoration: line-through;
             color: #6b7280;
-            font-size: 1.1rem;
-            margin-right: 0.5rem;
+            font-size: 1rem;
+            margin-right: 0.4rem;
             font-weight: 400;
         }
 
@@ -341,32 +344,27 @@
             text-align: center;
         }
 
-        .team-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.3rem;
-        }
-
         .team-role {
             color: #60a5fa !important;
             font-weight: 600;
-            font-size: 0.85rem !important;
+            font-size: 0.8rem !important;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         .team-info {
             display: flex;
             flex-direction: column;
             gap: 0.4rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .team-card a {
             color: var(--accent-cyan);
             text-decoration: none;
             font-weight: 600;
-            margin-top: 0.8rem;
+            margin-top: 0.6rem;
             display: inline-block;
         }
 
@@ -374,58 +372,81 @@
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 2rem;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
         input, textarea, select {
             width: 100%;
-            padding: 1rem;
-            background: rgba(15, 23, 42, 0.6);
+            padding: 0.85rem;
+            background: rgba(15, 23, 42, 0.8);
             border: 1px solid var(--card-border);
             border-radius: 8px;
             color: #fff;
             outline: none;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--primary);
+            font-size: 0.9rem;
         }
 
         button {
             background: linear-gradient(135deg, var(--primary), #1d4ed8);
             color: #fff;
             border: none;
-            padding: 1rem;
+            padding: 0.9rem;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 700;
-            transition: box-shadow 0.3s;
-        }
-
-        button:hover {
-            box-shadow: 0 0 20px var(--primary-glow);
         }
 
         footer {
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 2rem 1.5rem;
             border-top: 1px solid var(--card-border);
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 6rem;
+            font-size: 0.85rem;
+            margin-top: 4rem;
         }
 
+        /* Responsive Mobile Styles */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.3rem; }
-            .contact-container, .calc-inputs { grid-template-columns: 1fr; }
-            .stats-bar { flex-direction: column; gap: 1.5rem; }
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(3, 7, 18, 0.98);
+                border-bottom: 1px solid var(--card-border);
+                padding: 1.5rem;
+                gap: 1.2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .contact-container, .calc-inputs {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -434,7 +455,8 @@
     <header>
         <nav>
             <div class="logo" onclick="showPage('home')">META x <span>DIGIO</span></div>
-            <ul class="nav-links">
+            <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Navigation">☰</button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
                 <li><a href="#" onclick="showPage('about')" id="nav-about">About Us</a></li>
                 <li><a href="#" onclick="showPage('services')" id="nav-services">Services</a></li>
@@ -492,7 +514,7 @@
 
     <main id="influencer" class="page-section">
         <h2 class="section-title">Influencer Management & Talent Growth</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--text-muted); font-size: 1.1rem;">
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: var(--text-muted); font-size: 1rem;">
             We help regional and national creators turn attention into revenue. From paid brand collaborations to video post-production and account protection, we handle the strategy so you can focus on creating.
         </p>
 
@@ -529,28 +551,28 @@
             </div>
         </div>
 
-        <div class="calculator-card" style="margin-top: 4rem;">
+        <div class="calculator-card">
             <h3 style="text-align: center; color: #fff;">Apply for Creator Roster</h3>
-            <p style="text-align: center; color: var(--text-muted); font-size: 0.95rem; margin-top: 0.5rem;">
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
                 Are you an influencer, content creator, or artist with 5,000+ followers? Partner with Meta x Digio today.
             </p>
-            <form style="margin-top: 2rem;" onsubmit="alert('Application Received! Our talent manager will reach out via WhatsApp/Email.'); return false;">
+            <form style="margin-top: 1.5rem;" onsubmit="alert('Application Received! Our talent manager will reach out via WhatsApp/Email.'); return false;">
                 <div class="calc-inputs">
                     <input type="text" placeholder="Creator / Stage Name" required>
                     <input type="text" placeholder="Main Instagram / YouTube Link" required>
                 </div>
-                <div class="calc-inputs" style="margin-top: 1rem;">
+                <div class="calc-inputs">
                     <input type="number" placeholder="Total Followers / Subscribers" required>
                     <input type="tel" placeholder="WhatsApp Contact Number" required>
                 </div>
-                <button type="submit" style="margin-top: 1.5rem;">Submit Creator Profile</button>
+                <button type="submit" style="margin-top: 1rem;">Submit Creator Profile</button>
             </form>
         </div>
     </main>
 
     <main id="about" class="page-section">
         <h2 class="section-title">About Meta x Digio</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--text-muted); font-size: 1.1rem;">
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2.5rem; color: var(--text-muted); font-size: 1rem;">
             Headquartered in Talwandi Sabo, Punjab, we partner with clients globally to drive measurable customer acquisition using performance ads, high-converting web design, and video editing.
         </p>
 
@@ -646,7 +668,7 @@
             </div>
         </div>
 
-        <h2 class="section-title" style="margin-top: 4rem;">Client Feedback</h2>
+        <h2 class="section-title" style="margin-top: 3rem;">Client Feedback</h2>
         <div class="grid">
             <div class="card">
                 <p>"Meta x Digio handled our complete local branding and ad funnel. Leads started coming in within 48 hours."</p>
@@ -714,21 +736,21 @@
             <h3 style="text-align: center; color: #fff;">Estimate Your Lead ROI</h3>
             <div class="calc-inputs">
                 <div>
-                    <label style="font-size: 0.9rem; color: var(--text-muted);">Monthly Ad Budget (₹)</label>
+                    <label style="font-size: 0.85rem; color: var(--text-muted);">Monthly Ad Budget (₹)</label>
                     <input type="number" id="budgetInput" value="10000" oninput="calculateROI()">
                 </div>
                 <div>
-                    <label style="font-size: 0.9rem; color: var(--text-muted);">Est. Cost Per Lead (₹)</label>
+                    <label style="font-size: 0.85rem; color: var(--text-muted);">Est. Cost Per Lead (₹)</label>
                     <input type="number" id="cplInput" value="50" oninput="calculateROI()">
                 </div>
             </div>
             <div class="calc-output">
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Estimated Leads Generated / Month</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">Estimated Leads Generated / Month</p>
                 <h4 id="leadOutput">200 Leads</h4>
             </div>
         </div>
 
-        <h2 class="section-title" style="margin-top: 4rem;">Frequently Asked Questions</h2>
+        <h2 class="section-title" style="margin-top: 3rem;">Frequently Asked Questions</h2>
         <div style="max-width: 800px; margin: 0 auto;">
             <div class="faq-item" onclick="toggleFaq(this)">
                 <div class="faq-question"><span>How fast can we launch our campaigns?</span><span>+</span></div>
@@ -782,6 +804,10 @@
     </footer>
 
     <script>
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('show');
+        }
+
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => page.classList.remove('active'));
@@ -792,6 +818,9 @@
             document.getElementById(pageId).classList.add('active');
             const activeNav = document.getElementById('nav-' + pageId);
             if (activeNav) activeNav.classList.add('active');
+
+            // Hide mobile dropdown menu after selection
+            document.getElementById('navLinks').classList.remove('show');
 
             window.scrollTo(0, 0);
         }
