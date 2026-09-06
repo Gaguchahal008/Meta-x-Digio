@@ -1,1 +1,37 @@
+name: Save Form Submission
 
+on:
+  repository_dispatch:
+    types: [form-submission]
+
+jobs:
+  save-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Create Submissions Directory
+        run: mkdir -p submissions
+
+      - name: Create Submission File
+        run: |
+          TIMESTAMP=$(date +'%Y-%m-%d_%H-%M-%S')
+          FILENAME="submissions/submission_${TIMESTAMP}.txt"
+          echo "--- FORM SUBMISSION DATA ---" > $FILENAME
+          echo "Date: $(date)" >> $FILENAME
+          echo "Name: ${{ github.event.client_payload.name }}" >> $FILENAME
+          echo "Email: ${{ github.event.client_payload.email }}" >> $FILENAME
+          echo "Phone: ${{ github.event.client_payload.phone }}" >> $FILENAME
+          echo "Service: ${{ github.event.client_payload.service }}" >> $FILENAME
+          echo "Message: ${{ github.event.client_payload.message }}" >> $FILENAME
+
+      - name: Commit and Push File
+        run: |
+          git config --global user.name "GitHub Form Bot"
+          git config --global user.email "bot@github.com"
+          git add submissions/
+          git commit -m "New form submission saved"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
