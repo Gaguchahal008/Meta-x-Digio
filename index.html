@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meta x Digio | Digital Growth Agency</title>
+    <title>Meta x Digio | Next-Gen Digital Growth Agency</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
         :root {
             --primary: #2563eb;
-            --primary-glow: rgba(37, 99, 235, 0.4);
+            --primary-glow: rgba(37, 99, 235, 0.5);
             --accent-cyan: #06b6d4;
-            --accent-orange: #ff5e00;
             --accent-purple: #a855f7;
+            --accent-orange: #f97316;
             --bg-dark: #030712;
-            --card-bg: rgba(17, 24, 39, 0.85);
-            --card-border: rgba(255, 255, 255, 0.1);
+            --bg-surface: rgba(15, 23, 42, 0.75);
+            --card-bg: rgba(17, 24, 39, 0.65);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --card-border-hover: rgba(56, 189, 248, 0.4);
             --text-main: #f9fafb;
             --text-muted: #9ca3af;
         }
@@ -25,6 +27,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -33,17 +36,32 @@
             line-height: 1.6;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);
+                radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.18) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 45%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
             background-attachment: fixed;
         }
 
-        /* Navigation */
+        .glow-orb {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .orb-1 { top: 5%; left: -100px; background: rgba(37, 99, 235, 0.25); }
+        .orb-2 { top: 40%; right: -100px; background: rgba(168, 85, 247, 0.2); }
+
         header {
             position: sticky;
             top: 0;
-            background: rgba(3, 7, 18, 0.95);
-            backdrop-filter: blur(16px);
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--card-border);
             z-index: 1000;
         }
@@ -54,16 +72,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.5rem;
+            padding: 1.1rem 1.5rem;
             position: relative;
         }
 
         .logo {
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #fff;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .logo span {
@@ -74,12 +95,12 @@
 
         .mobile-toggle {
             display: none;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--card-border);
             color: #fff;
-            font-size: 1.5rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
+            font-size: 1.4rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 8px;
             cursor: pointer;
         }
 
@@ -93,65 +114,99 @@
             color: var(--text-muted);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             transition: all 0.3s ease;
+            position: relative;
+            padding: 0.2rem 0;
         }
 
         .nav-links a:hover, .nav-links a.active {
             color: #fff;
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
         }
 
-        /* Hero Section */
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-cyan));
+            border-radius: 2px;
+        }
+
         .hero {
             max-width: 1000px;
-            margin: 3rem auto 2rem;
+            margin: 4rem auto 2.5rem;
             padding: 0 1.5rem;
             text-align: center;
+            position: relative;
         }
 
         .badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             padding: 0.4rem 1.2rem;
             border-radius: 50px;
-            background: rgba(37, 99, 235, 0.1);
-            border: 1px solid rgba(37, 99, 235, 0.3);
+            background: rgba(37, 99, 235, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.3);
             color: #60a5fa;
             font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-cyan);
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            line-height: 1.2;
+            font-size: 3.2rem;
+            line-height: 1.15;
             font-weight: 800;
-            margin-bottom: 1.2rem;
-            background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+            margin-bottom: 1.4rem;
+            letter-spacing: -1px;
+            background: linear-gradient(180deg, #ffffff 30%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
             max-width: 750px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
         }
 
         .cta-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             background: linear-gradient(135deg, var(--primary), #1d4ed8);
             color: #fff;
-            padding: 0.9rem 2rem;
-            border-radius: 8px;
+            padding: 0.95rem 2.2rem;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
-            box-shadow: 0 0 25px var(--primary-glow);
+            font-size: 0.98rem;
+            box-shadow: 0 0 30px var(--primary-glow);
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.7);
         }
 
         .stats-bar {
@@ -159,32 +214,38 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             max-width: 1000px;
-            margin: 2.5rem auto 0;
+            margin: 3.5rem auto 0;
             background: var(--card-bg);
+            backdrop-filter: blur(16px);
             border: 1px solid var(--card-border);
-            padding: 1.2rem;
-            border-radius: 12px;
+            padding: 1.5rem;
+            border-radius: 16px;
             text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .stat-item h4 {
-            font-size: 1.6rem;
-            color: var(--accent-cyan);
+            font-size: 2rem;
+            background: linear-gradient(135deg, #fff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 800;
         }
 
         .stat-item p {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
             text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-top: 2px;
         }
 
-        /* Layout Grid & Cards */
         .page-section {
             display: none;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2.5rem 1.5rem;
+            padding: 3rem 1.5rem;
             animation: fadeIn 0.4s ease forwards;
         }
 
@@ -193,60 +254,210 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
+            font-size: 2.1rem;
+            font-weight: 800;
+            margin-bottom: 2.2rem;
             text-align: center;
             color: #fff;
+            letter-spacing: -0.5px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.8rem;
         }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--card-border);
-            padding: 1.8rem 1.5rem;
-            border-radius: 16px;
-            transition: all 0.3s ease;
+            padding: 2rem 1.6rem;
+            border-radius: 20px;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--card-border-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
         }
 
         .card h3 {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 0.8rem;
             color: #fff;
+            font-weight: 700;
         }
 
         .card p {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.92rem;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 1.2rem;
+        }
+
+        .card ul li {
+            margin-bottom: 0.6rem;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .card ul li::before {
+            content: "✦";
+            color: var(--accent-cyan);
+            margin-right: 8px;
+            font-size: 0.75rem;
+        }
+
+        /* Portfolio Showcase Styles */
+        .case-study-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.85));
+            border: 1px solid var(--accent-cyan);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.15);
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 1rem;
+        }
+
+        .case-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .case-tag {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-box {
+            background: rgba(3, 7, 18, 0.6);
+            border: 1px solid var(--card-border);
+            padding: 1.2rem;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .case-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-cyan);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-caption {
+            background: rgba(15, 23, 42, 0.9);
+            padding: 0.8rem 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--card-border);
+        }
+
+        .form-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.7));
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 35px rgba(37, 99, 235, 0.2);
+        }
+
+        .form-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-top: 1.2rem;
         }
 
         .price-tag {
-            font-size: 1.6rem;
+            font-size: 1.75rem;
             font-weight: 800;
             color: var(--accent-orange);
-            margin: 1rem 0;
+            margin: 1.1rem 0;
         }
 
         .old-price {
             text-decoration: line-through;
             color: #6b7280;
-            font-size: 1rem;
-            margin-right: 0.4rem;
+            font-size: 1.05rem;
+            margin-right: 0.5rem;
             font-weight: 400;
         }
 
-        /* Forms */
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -256,37 +467,52 @@
         form {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.1rem;
         }
 
         input, textarea, select {
             width: 100%;
-            padding: 0.85rem;
-            background: rgba(15, 23, 42, 0.8);
+            padding: 0.95rem 1.1rem;
+            background: rgba(15, 23, 42, 0.85);
             border: 1px solid var(--card-border);
-            border-radius: 8px;
+            border-radius: 10px;
             color: #fff;
             outline: none;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
+            transition: all 0.3s ease;
         }
 
-        button {
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+        }
+
+        button[type="submit"] {
             background: linear-gradient(135deg, var(--primary), #1d4ed8);
             color: #fff;
             border: none;
-            padding: 0.9rem;
-            border-radius: 8px;
+            padding: 1rem;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 0 20px var(--primary-glow);
+            transition: all 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.6);
         }
 
         footer {
             text-align: center;
-            padding: 2rem 1.5rem;
+            padding: 2.5rem 1.5rem;
             border-top: 1px solid var(--card-border);
             color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 4rem;
+            font-size: 0.88rem;
+            margin-top: 5rem;
+            background: rgba(3, 7, 18, 0.9);
         }
 
         @media (max-width: 768px) {
@@ -302,15 +528,19 @@
                 border-bottom: 1px solid var(--card-border);
                 padding: 1.5rem;
                 gap: 1.2rem;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.9);
             }
             .nav-links.show { display: flex; }
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.2rem; }
             .stats-bar { grid-template-columns: 1fr; gap: 1.2rem; }
-            .contact-container { grid-template-columns: 1fr; }
+            .contact-container, .form-inputs { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
 
     <header>
         <nav>
@@ -330,23 +560,25 @@
 
     <main id="home" class="page-section active">
         <section class="hero">
-            <div class="badge">Next-Gen Growth Agency</div>
+            <div class="badge">
+                <span class="badge-dot"></span> Next-Gen Growth Agency
+            </div>
             <h1>Scale Your Brand with Data & Authority</h1>
             <p>High-ROI paid campaigns, video editing, website development, and automated lead systems for enterprises, shops, hotels, institutes, and creators.</p>
-            <a href="#" onclick="showPage('contact')" class="cta-btn">Launch Your Business</a>
+            <a href="#" onclick="showPage('contact')" class="cta-btn">Launch Your Business →</a>
 
             <div class="stats-bar">
                 <div class="stat-item">
-                    <h4>50+</h4>
-                    <p>Projects Delivered</p>
+                    <h4>₹16M+</h4>
+                    <p>Client Ad Revenue Generated</p>
                 </div>
                 <div class="stat-item">
-                    <h4>10M+</h4>
-                    <p>Ad Impressions</p>
+                    <h4>650K+</h4>
+                    <p>Targeted Store Sessions</p>
                 </div>
                 <div class="stat-item">
-                    <h4>98%</h4>
-                    <p>Client Satisfaction</p>
+                    <h4>31.5K+</h4>
+                    <p>Orders Delivered</p>
                 </div>
             </div>
         </section>
@@ -354,16 +586,16 @@
         <h2 class="section-title">Industries We Scale</h2>
         <div class="grid">
             <div class="card">
+                <h3>E-Commerce & Online Stores</h3>
+                <p>High-ROI Facebook & Instagram ad campaigns targeting buyers and scaling monthly sales volume.</p>
+            </div>
+            <div class="card">
                 <h3>Real Estate & Enterprises</h3>
                 <p>Lead funnels, site visit bookings, and automated CRM pipeline setup.</p>
             </div>
             <div class="card">
                 <h3>Local Shops & Hotels</h3>
                 <p>Google Maps ranking, local footfall campaigns, and target social ads.</p>
-            </div>
-            <div class="card">
-                <h3>Institutes & Colleges</h3>
-                <p>Student enrollment funnels, branding, and active community outreach.</p>
             </div>
             <div class="card">
                 <h3>Influencer Management</h3>
@@ -374,45 +606,161 @@
 
     <main id="about" class="page-section">
         <h2 class="section-title">About Meta x Digio</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 2.5rem; color: var(--text-muted);">
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2.8rem; color: var(--text-muted); font-size: 1.05rem;">
             Headquartered in Talwandi Sabo, Punjab, we partner with clients globally to drive measurable customer acquisition using performance ads, high-converting web design, and video editing.
         </p>
+
+        <h2 class="section-title">Leadership & Team</h2>
+        <div class="grid">
+            <div class="card" style="text-align: center;">
+                <h3>Manpreet Singh</h3>
+                <p style="color: #60a5fa; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1rem;">Chief Executive Officer (CEO)</p>
+                <p>📞 +91 9815619566</p>
+                <p>✉️ Gchahal1122@gmail.com</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <h3>Harman Singh</h3>
+                <p style="color: #60a5fa; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1rem;">Partner</p>
+                <p>📞 +91 90416 66481</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <h3>Gurpyar Singh</h3>
+                <p style="color: #60a5fa; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1rem;">Partner | Lead Dev & Editor</p>
+                <p>📞 +91 8872791624</p>
+                <p>✉️ Gchahal1122@gmail.com</p>
+            </div>
+        </div>
     </main>
 
     <main id="services" class="page-section">
         <h2 class="section-title">Our Capabilities</h2>
         <div class="grid">
             <div class="card">
-                <h3>Paid Promotions & Ads</h3>
-                <p>Targeted campaigns designed for immediate conversions and maximum return.</p>
+                <h3>Paid Facebook & Instagram Ads</h3>
+                <p>Targeted ad strategies that consistently turn ad spend into profitable store orders.</p>
+                <ul>
+                    <li>Meta Purchase Campaign Setup</li>
+                    <li>Lookalike & Custom Audiences</li>
+                    <li>Retargeting & Ad Creatives</li>
+                </ul>
             </div>
             <div class="card">
                 <h3>Web Design & Funnels</h3>
-                <p>Modern fast websites and single-page landing pages optimized to convert traffic.</p>
+                <p>Modern fast websites and landing pages optimized to convert traffic.</p>
+                <ul>
+                    <li>Custom Web Development</li>
+                    <li>Landing Page Design</li>
+                    <li>Lead Capture Funnels</li>
+                </ul>
             </div>
             <div class="card">
                 <h3>Video Production & Editing</h3>
                 <p>Engaging video editing built for social media and YouTube channels.</p>
+                <ul>
+                    <li>Full Video Editing & Sound FX</li>
+                    <li>High-CTR Thumbnail Design</li>
+                    <li>Reels & Shorts Production</li>
+                </ul>
             </div>
             <div class="card">
                 <h3>Search Engine Optimization</h3>
                 <p>Rank higher on organic Google searches for your core business terms.</p>
+                <ul>
+                    <li>High-Authority Backlinks</li>
+                    <li>Google Business Profile Sync</li>
+                    <li>Keyword & Content Planning</li>
+                </ul>
             </div>
         </div>
     </main>
 
     <main id="influencer" class="page-section">
         <h2 class="section-title">Influencer Management</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: var(--text-muted);">
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2.5rem; color: var(--text-muted);">
             We help regional and national creators turn attention into revenue through brand collaborations, video post-production, and channel monetization.
         </p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Sponsorships & Monetization</h3>
+                <p>Connect with top regional and national brands for paid promotions, product integration, and long-term deals.</p>
+            </div>
+            <div class="card">
+                <h3>Reels, Shorts & YouTube Editing</h3>
+                <p>Our editing team optimizes content to boost retention, increase organic reach, and drive viral engagement.</p>
+            </div>
+            <div class="card">
+                <h3>Personal Brand Scale</h3>
+                <p>Build a long-term media presence beyond social channels with custom websites and audience management.</p>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <h3 style="text-align: center; color: #fff;">Apply for Creator Roster</h3>
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+                Are you an influencer, content creator, or artist with 5,000+ followers? Partner with Meta x Digio today.
+            </p>
+            <form style="margin-top: 1.5rem;" onsubmit="handleCreatorSubmit(event)">
+                <div class="form-inputs">
+                    <input type="text" id="creatorName" placeholder="Creator / Stage Name" required>
+                    <input type="text" id="creatorLink" placeholder="Main Instagram / YouTube Link" required>
+                </div>
+                <div class="form-inputs">
+                    <input type="text" id="creatorFollowers" placeholder="Total Followers / Subscribers" required>
+                    <input type="tel" id="creatorPhone" placeholder="WhatsApp Contact Number" required>
+                </div>
+                <button type="submit" style="margin-top: 1.2rem;">Submit Creator Profile</button>
+            </form>
+        </div>
     </main>
 
     <main id="work" class="page-section">
-        <h2 class="section-title">Featured Work & Results</h2>
+        <h2 class="section-title">Featured Case Studies & Proven Results</h2>
+
+        <div class="case-study-card">
+            <div class="case-header">
+                <div>
+                    <h3 class="case-title">Online Kitab Ghar — E-Commerce Scaling</h3>
+                    <p style="color: var(--text-muted); margin-top: 4px;">FB & Instagram Performance Ads Campaign</p>
+                </div>
+                <span class="case-tag">Verified Sales Proof</span>
+            </div>
+
+            <div class="case-metrics">
+                <div class="metric-box">
+                    <div class="metric-value">₹16.12M</div>
+                    <div class="metric-label">Total Store Sales</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">650.9K</div>
+                    <div class="metric-label">Targeted Sessions</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">31.5K+</div>
+                    <div class="metric-label">Orders Generated</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value">₹413.7K+</div>
+                    <div class="metric-label">Direct Ad Attribution</div>
+                </div>
+            </div>
+
+            <h4 style="color: #fff; margin-bottom: 1rem;">Live Shopify Analytics Dashboard</h4>
+            <div class="case-gallery">
+                <div class="gallery-item">
+                    <img src="1000062331.jpg" alt="Shopify Revenue Overview Dashboard">
+                    <div class="gallery-caption">Store Dashboard: Over ₹16.12M in total sales generated via targeted audience campaigns.</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="1000062325.jpg" alt="Meta Ads Performance Breakdown">
+                    <div class="gallery-caption">Attribution Dashboard: Direct revenue tracked from Instagram (₹253K+) and Facebook Ads (₹160K+).</div>
+                </div>
+            </div>
+        </div>
+
         <div class="grid">
             <div class="card">
-                <h3>Real Estate Funnel</h3>
+                <h3>Real Estate Lead Funnel</h3>
                 <p>Generated 450+ qualified leads in 30 days for housing developments using Meta Ads & landing pages.</p>
             </div>
             <div class="card">
@@ -433,16 +781,31 @@
                 <h3>Landing Page Pack</h3>
                 <p>Single page setup built for conversions.</p>
                 <div class="price-tag"><span class="old-price">₹4,999</span> ₹2,999/-</div>
+                <ul>
+                    <li>Custom Landing Page Design</li>
+                    <li>SEO Optimization</li>
+                    <li>Lead Capture Setup</li>
+                </ul>
             </div>
             <div class="card">
                 <h3>Outleads Ads Pack</h3>
                 <p>Multi-channel paid promotions setup.</p>
                 <div class="price-tag"><span class="old-price">₹12,999</span> ₹9,999/-</div>
+                <ul>
+                    <li>Google & YouTube Ads Setup</li>
+                    <li>Facebook & Instagram Ads</li>
+                    <li>Weekly Performance Reports</li>
+                </ul>
             </div>
             <div class="card">
                 <h3>YouTube Gold Pack</h3>
                 <p>Complete video production & channel management.</p>
                 <div class="price-tag"><span class="old-price">₹15,999</span> ₹9,999/-</div>
+                <ul>
+                    <li>Editing (Up to 10 Videos)</li>
+                    <li>SEO Titles & Custom Thumbnails</li>
+                    <li>Channel Growth Strategy</li>
+                </ul>
             </div>
         </div>
     </main>
@@ -466,7 +829,7 @@
                     <input type="tel" id="formPhone" placeholder="Phone Number" required>
                     <select id="formService" required style="color: var(--text-muted);">
                         <option value="">Select Primary Interest</option>
-                        <option value="ads">Paid Promotions & Ads</option>
+                        <option value="ads">Paid Facebook & Instagram Ads</option>
                         <option value="web">Website & Landing Page</option>
                         <option value="video">Video Editing & YouTube</option>
                         <option value="influencer">Influencer Management</option>
@@ -484,6 +847,8 @@
     </footer>
 
     <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLOfnxsNgtEX2k0SGhxFFIBKW-iKilWwB1u3oBjC3me0WKFFaQ6LlYJSJr7M4oscYp/exec";
+
         function toggleMobileMenu() {
             document.getElementById('navLinks').classList.toggle('show');
         }
@@ -506,9 +871,6 @@
         async function handleFormSubmit(event) {
             event.preventDefault();
 
-            // Direct link to your deployed Google Apps Script
-            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLOfnxsNgtEX2k0SGhxFFIBKW-iKilWwB1u3oBjC3me0WKFFaQ6LlYJSJr7M4oscYp/exec";
-
             const payload = {
                 name: document.getElementById('formName').value,
                 email: document.getElementById('formEmail').value,
@@ -530,6 +892,33 @@
             } catch (error) {
                 console.error('Error:', error);
                 alert('Failed to send details. Please try again.');
+            }
+        }
+
+        async function handleCreatorSubmit(event) {
+            event.preventDefault();
+
+            const payload = {
+                name: document.getElementById('creatorName').value,
+                email: document.getElementById('creatorLink').value,
+                phone: document.getElementById('creatorPhone').value,
+                service: 'Creator Application (' + document.getElementById('creatorFollowers').value + ' Followers)',
+                message: 'Creator Roster Profile Submission'
+            };
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                alert('Creator Profile Application Submitted!');
+                event.target.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Submission failed. Please try again.');
             }
         }
     </script>
